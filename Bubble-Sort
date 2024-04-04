@@ -1,0 +1,41 @@
+//Bubble sort
+let arr = ["aaa","bb","ccc","d"];
+
+function sortMe(arr,callbackOrder) {
+    const arrx = arr;
+    let i = 0;
+    let sorted = true;
+
+    do {
+        let a = arrx[i]
+        let b = arrx[i + 1]
+        let compares = callbackOrder(a,b);
+        if(compares > 0){
+                let c = arrx[i+1];
+                arrx[i+1] = arrx[i];
+                arrx[i] = c;
+                sorted = false;
+        }
+
+        i++;
+
+        if(sorted == false && i == arrx.length - 1) {
+            i = 0;
+            sorted = true;
+        }
+        
+
+    } while(i < (arrx.length - 1) || sorted == false);
+
+    return arr;
+}
+
+console.log(arr);
+console.log(sortMe(arr,function(a,b){
+    return a.length - b.length; //for array of strings
+return a - b; //for array of numbers
+}));
+console.log(arr);
+arr.sort(function(a,b){
+    return a - b;
+})
